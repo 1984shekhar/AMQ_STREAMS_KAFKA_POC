@@ -1,4 +1,10 @@
 ### strimzi-2-kubectl folder: It is having yaml files for deployment in Strimzi
+### Start minikube with strimzi-2 as profile.
+```
+minikube start --cpus 4 --memory 10240Mi -p strimzi-2
+
+```
+### Install Cluster Operator.
 ```
 [chandrashekhar@localhost strimzi-2-kubectl]$ kubectl create ns strimzi-test
 [chandrashekhar@localhost strimzi-2-kubectl]$ curl -L0 https://strimzi.io/install/latest | sed 's/namespace: .*/namespace: strimzi-test/' > strimzi.yaml
