@@ -82,27 +82,6 @@ OpenJDK 64-Bit Server VM warning: If the number of processors is expected to inc
 my-topic
 cs-topic
 ```
-
-### Check list of groups
-```
-[kafka@my-cluster-kafka-0 bin]$ ./kafka-consumer-groups.sh  --list --bootstrap-server localhost:9092
-OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, then you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads=N
-consumerGroup1
-```
-
-### Check offset and consumer stats
-```
-[kafka@my-cluster-kafka-0 bin]$ ./kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group consumerGroup1 --describe
-
-OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, then you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads=N
-Consumer group 'consumerGroup1' has no active members.
-
-GROUP           TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID     HOST            CLIENT-ID
-consumerGroup1  cs-topic        0          88665           88665           0               -               -               -
-consumerGroup1  cs-topic        1          84387           87025           2638            -               -               -
-```
-
-
 ### Code changes required for one way TLS communication with Strimzi from Java based Kafka Clients:
 
 A. For both kafka.SampleProducer and kafka.ConsumerCreator:
@@ -121,6 +100,31 @@ properties.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG,"/home/chandrashekhar/D
 properties.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_SSL");
 properties.put(SaslConfigs.SASL_MECHANISM,"SCRAM-SHA-512");
 properties.put(SaslConfigs.SASL_JAAS_CONFIG,"org.apache.kafka.common.security.scram.ScramLoginModule required username=\"my-user\" password=\"gMBqy2GEV0kZ\";");
+```
+### How to run Producer and Consumer :
+```
+- Using any Java IDE, these examples can be executed. I used Eclipse IDE.
+- Proucer: kafka.KafkaProducerDemo.java
+- Consumer: kafka.KafkaClient.java
+```
+
+### Check list of groups
+```
+[kafka@my-cluster-kafka-0 bin]$ ./kafka-consumer-groups.sh  --list --bootstrap-server localhost:9092
+OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, then you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads=N
+consumerGroup1
+```
+
+### Check offset and consumer stats
+```
+[kafka@my-cluster-kafka-0 bin]$ ./kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group consumerGroup1 --describe
+
+OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, then you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads=N
+Consumer group 'consumerGroup1' has no active members.
+
+GROUP           TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID     HOST            CLIENT-ID
+consumerGroup1  cs-topic        0          88665           88665           0               -               -               -
+consumerGroup1  cs-topic        1          84387           87025           2638            -               -               -
 ```
 
 ### Authentication and Authorization:
@@ -194,6 +198,13 @@ properties.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG,"/home/chandrashekhar/D
 properties.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_SSL");     
 properties.put(SaslConfigs.SASL_MECHANISM,"SCRAM-SHA-512");
 properties.put(SaslConfigs.SASL_JAAS_CONFIG,"org.apache.kafka.common.security.scram.ScramLoginModule required username=\"my-user\" password=\"gMBqy2GEV0kZ\";");
+```
+
+### How to run Producer and Consumer :
+```
+- Using any Java IDE, these examples can be executed. I used Eclipse IDE.
+- Proucer: kafka.KafkaProducerDemo.java
+- Consumer: kafka.KafkaClient.java
 ```
 
         
