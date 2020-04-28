@@ -86,7 +86,7 @@ cs-topic
 
 A. For both kafka.SampleProducer and kafka.ConsumerCreator:
 
-1. comment following kafka properties:
+1. Un-comment following kafka properties:
 ```
 properties.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SSL");
 ```
@@ -95,11 +95,11 @@ properties.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SSL");
 properties.put(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG,"pA3F9qkI5aF0");
 properties.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG,"/home/chandrashekhar/Development/Streams_RH/strimzi-2-kubectl/ca.p12");
 ```      
-3. Uncomment following kafka properties, These are only required for SASL(SCRAM-SHA-512) login:
+3. Comment following kafka properties, These are only required for SASL(SCRAM-SHA-512) login:
 ```
-properties.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_SSL");
-properties.put(SaslConfigs.SASL_MECHANISM,"SCRAM-SHA-512");
-properties.put(SaslConfigs.SASL_JAAS_CONFIG,"org.apache.kafka.common.security.scram.ScramLoginModule required username=\"my-user\" password=\"gMBqy2GEV0kZ\";");
+// properties.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_SSL");
+// properties.put(SaslConfigs.SASL_MECHANISM,"SCRAM-SHA-512");
+//  properties.put(SaslConfigs.SASL_JAAS_CONFIG,"org.apache.kafka.common.security.scram.ScramLoginModule required username=\"my-user\" password=\"gMBqy2GEV0kZ\";");
 ```
 ### How to run Producer and Consumer :
 ```
@@ -184,16 +184,16 @@ my-user   scram-sha-512    simple
 
 A. For both kafka.SampleProducer and kafka.ConsumerCreator:
 
-1. Uncomment following kafka properties:
+1. Comment following kafka properties:
 ```
-properties.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SSL");
+// properties.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SSL");
 ```
 2. Set Trustore location and password.
 ```
 properties.put(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG,"pA3F9qkI5aF0");
 properties.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG,"/home/chandrashekhar/Development/Streams_RH/strimzi-2-kubectl/ca.p12");
 ```
-3. comment following kafka properties:
+3. Un-Comment following kafka properties:
 ```
 properties.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_SSL");     
 properties.put(SaslConfigs.SASL_MECHANISM,"SCRAM-SHA-512");
