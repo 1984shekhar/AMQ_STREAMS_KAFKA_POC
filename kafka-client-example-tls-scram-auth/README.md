@@ -1,3 +1,39 @@
+### All steps mentioned in this doc are for deployment in minikube. All steps will remain same for Minishift too but only instead of loadbalancer service, OpenShift route can be used. Following yaml would expose a route also with scram-sha-512 authentication. Run it as 'oc apply -f kafka-ephemeral-single-scram-sha.yaml'.
+```
+apiVersion: kafka.strimzi.io/v1beta1
+kind: Kafka
+metadata:
+  name: my-cluster
+spec:
+  kafka:
+    version: 2.5.0
+    replicas: 1
+    listeners:
+      plain: {}
+      tls: {}
+      external:
+       type: route
+       tls: true
+       authentication:
+          type: scram-sha-512
+    authorizatiom:
+       type: simple
+    config:
+      offsets.topic.replication.factor: 1
+      transaction.state.log.replication.factor: 1
+      transaction.state.log.min.isr: 1
+      log.message.format.version: "2.5"
+    storage:
+      type: ephemeral
+  zookeeper:
+    replicas: 1
+    storage:
+      type: ephemeral
+  entityOperator:
+    topicOperator: {}
+    userOperator: {}
+```
+
 ### strimzi-2-kubectl folder: It is having yaml files for deployment in Strimzi
 ### Start minikube with strimzi-2 as profile.
 ```
