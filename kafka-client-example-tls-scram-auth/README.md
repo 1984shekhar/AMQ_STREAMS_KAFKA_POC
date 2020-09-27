@@ -166,6 +166,7 @@ my-cluster-kafka-1                            0/2     Terminating   0          1
 ### Create Kafka Topic User
 ```
 [chandrashekhar@localhost strimzi-2-kubectl]$ curl -L0 https://strimzi.io/examples/latest/user/kafka-user.yaml > kafka-user.yaml
+# In kafka-user.yaml replace KafkaUser.spec.authentication.type with scram-sha-512 in place of tls.
 [chandrashekhar@localhost strimzi-2-kubectl]$ kubectl apply -f kafka-user.yaml
 ```
 
